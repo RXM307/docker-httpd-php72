@@ -6,7 +6,7 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 
 # Install PHP
 RUN yum -y install php72w php72w-bcmath php72w-cli php72w-common php72w-gd php72w-intl php72w-ldap php72w-mbstring \
-    php72w-mysql php72w-pear php72w-soap php72w-xml php72w-xmlrpc
+    php72w-mysql php72w-pear php72w-soap php72w-xml php72w-xmlrpc mod_ssl mod_proxy_html && yum clean all
 
 # Update Apache Configuration
 RUN sed -E -i -e '/<Directory "\/var\/www\/html">/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
