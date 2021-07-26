@@ -1,4 +1,4 @@
-FROM centos/httpd:latest
+FROM centos/httpd-24-centos7:latest
 
 # Install EPEL Repo
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
