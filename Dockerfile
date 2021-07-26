@@ -1,5 +1,8 @@
 FROM centos/httpd-24-centos7:latest
 
+# Switch to root to install
+USER 0
+
 # Install EPEL Repo
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -12,6 +15,8 @@ COPY php.ini /etc/php.ini
 # Update Apache Configuration
 RUN sed -E -i -e '/<Directory "\/var\/www\/html">/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 RUN sed -E -i -e 's/DirectoryIndex (.*)$/DirectoryIndex index.php \1/g' /etc/httpd/conf/httpd.conf
+
+USER 1001
 
 EXPOSE 80
 
