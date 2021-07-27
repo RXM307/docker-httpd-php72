@@ -21,4 +21,4 @@ USER 1001
 EXPOSE 80
 
 # Start Apache
-CMD ["/run-httpd.sh"]
+CMD run-httpd
